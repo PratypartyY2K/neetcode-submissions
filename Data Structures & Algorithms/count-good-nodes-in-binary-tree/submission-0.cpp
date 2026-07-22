@@ -1,0 +1,36 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+private:
+    int dfs(TreeNode* node, int maxSoFar) {
+        if (!node) return 0;
+        
+        int count = 0;
+        
+        // A node is "good" if its value is >= the maximum value seen on this path
+        if (node->val >= maxSoFar) {
+            count = 1;
+            maxSoFar = node->val; // Update the running max for children
+        }
+        
+        // Recursively count good nodes in left and right subtrees
+        count += dfs(node->left, maxSoFar);
+        count += dfs(node->right, maxSoFar);
+        
+        return count;
+    }
+public:
+    int goodNodes(TreeNode* root) {
+        return dfs(root, root->val);
+    }
+};
