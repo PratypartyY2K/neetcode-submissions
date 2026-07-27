@@ -1,3 +1,9 @@
+/*
+Since the answer is a continuous subarray of size K, 
+we can use Binary Search directly on the starting index mid of the K-element window.
+We compare x - arr[mid] vs arr[mid + k] - x.
+*/
+
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
