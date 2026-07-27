@@ -1,3 +1,7 @@
+/*
+Use Binary Search (std::lower_bound) to find the index closest to x.
+Then expand outwards using two pointers to pick the k closest elements.
+*/
 class Solution {
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
